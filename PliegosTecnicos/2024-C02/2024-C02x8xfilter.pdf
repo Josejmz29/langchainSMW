@@ -1,0 +1,1189 @@
+
+
+
+
+
+		
+<!DOCTYPE html>
+
+
+
+
+<html>
+    <head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="European Single Procurement Document (ESPD) is a self-declaration of the businesses' financial status, abilities and suitability for a public procurement procedure. It is used as a preliminary evidence of fulfilment of the exclusion and eligibility criteria required in EU public procurement procedures. The tenderers no longer have to provide full documentary evidence and different forms, which means a significant simplification of access to cross-border tendering opportunities. The European Commission provides a free online service for the buyers, bidders and other parties interested in filling in the ESPD electronically.">
+		<meta name="keywords" content=" European Single Procurement Document, ESPD, public, procurement, e-procurement, electronic procurement, tender, web service, online service, form, self-declaration, proof, evidence, exclusion, eligibility, selection, criteria, public buyer, contracting authority, bidder, tenderer, economic operator, Europe, European Union, European Commission"/>
+		<meta name="author" content="European Commission, DG GROW, DG Internal Market">
+		<title>ESPD</title>
+		
+		<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
+        <link rel="stylesheet" type="text/css" href="/espd-web/static/bundle/all.css;jsessionid=15E2B70E0F913E88115691794318C41F"> 
+        <link rel="stylesheet" type="text/css" href="/espd-web/static/bundle/home.css;jsessionid=15E2B70E0F913E88115691794318C41F">
+		
+		<script src="/espd-web/static/bundle/all.js;jsessionid=15E2B70E0F913E88115691794318C41F"></script>
+		
+		
+
+		<script>
+			var pageLanguage = "es".toLowerCase();
+			
+			function dataShow() {
+				var elems = $(this).attr("data-target-show").split(";")
+				for (i in elems) {
+					$(elems[i]).fadeIn();
+				}
+			}
+									
+			function dataHide() {
+				var elems = $(this).attr("data-target-hide").split(";")
+				for (i in elems) {
+					$(elems[i]).hide();
+				}
+			}
+			
+
+			$(function () {
+				validator(defaultValidators, "required", "Campo obligatorio");
+				validator(defaultValidators, "number", "Introduzca un número válido.");
+				validator(defaultValidators, "digits", "Introduzca solo cifras.");
+				validator(defaultValidators, "url", "Introduzca un URL válido.");
+	
+				jQuery.extend(jQuery.validator.messages, defaultValidators);
+			            
+				$("input.datepicker").datepicker({format: "dd-mm-yyyy", clearBtn: true, todayHighlight: true});
+				$("span[data-toggle='tooltip']").tooltip({placement: "top", html: true, trigger: "hover"}).addClass("fa").addClass("fa-info-circle");
+				$("input:radio[data-target-show]").change(dataShow);
+				$("input:radio[data-target-hide]").change(dataHide);
+				$("[data-target-show]").click(dataShow);
+				$("[data-target-hide]").click(dataHide);
+				sortDropdowns();
+
+				var ecertisHandler = EcertisHandler("https://www.development.ec.europa.eu/growth/tools-databases/ecertisrest/criteria/espd/[uuid]/?countryFilter=[country]&lang=[lang]", "")
+				$('.ecertis-link').click(ecertisHandler);
+			
+				$("#espd-popup").delay(3600000).show(0);
+				$("#espd-popup-close").click(function(){$("#espd-popup").hide()})
+			});
+		</script>
+		<div id="espd-popup" class="espd-popup" style="display: none;">
+			<div class="espd-popup-content">
+				<p><span data-i18n="expire_reminder_message">Hace casi una hora que no ha realizado ninguna acción en el servicio DEUC. <p> Guarde el DEUC electrónico para no perder datos. <p>Puede importar (volver a utilizar) el DEUC electrónico en cualquier momento y seguir trabajando.</span></p>
+				<a id="espd-popup-close" data-i18n="ok" style="cursor:pointer">OK</a>
+			</div>
+		</div>
+		
+    </head>
+    <body>
+    	<div id="espd-content">
+	    	<div class="container panel espd-app-container">
+		        <div id="header">
+		            
+
+
+
+
+
+<script>
+    $(function () {
+        $('#language').on('change', function () {
+            language(this.value);
+            var faqLink = $('#faq_link');
+            if (faqLink && this.value) {
+                faqLink.attr('href', 'http://ec.europa.eu/DocsRoom/documents/16002/attachments/1/translations/' + this.value.substr(0, 2) + '/renditions/native');
+            }
+        });
+         
+    });
+   
+
+    
+</script>
+
+<div id="top-lang-selector" class="hidden-print">
+        <ul class="reset-list">
+            <li><a target="_blank" href="http://ec.europa.eu/growth/legal-notice/index_en.htm"><span data-i18n="legal_notice">Aviso jurídico</span></a></li>
+            <li><a target="_blank" href="http://ec.europa.eu/growth/cookies/index_en.htm"><span data-i18n="cookies">Cookies</span></a></li>
+<!--        <li><a target="_blank" href="/espd-web/contact"><span data-i18n="contact">Contacto</span></a></li> -->
+            <li><a target="_blank" href="/espd-web/about"><span data-i18n="about">Acerca de</span></a></li>
+            <li>
+                <label for="language"></label><select id="language">
+                
+                    <option value="bg" >български</option>
+                
+                    <option value="cs" >čeština</option>
+                
+                    <option value="da" >Dansk</option>
+                
+                    <option value="de" >Deutsch</option>
+                
+                    <option value="et" >Eesti keel</option>
+                
+                    <option value="el" >Eλληνικά</option>
+                
+                    <option value="en" >English</option>
+                
+                    <option value="es" selected>Español</option>
+                
+                    <option value="fr" >Français</option>
+                
+                    <option value="hr" >Hrvatski</option>
+                
+                    <option value="it" >Italiano</option>
+                
+                    <option value="lv" >Latviešu valoda</option>
+                
+                    <option value="lt" >Lietuvių kalba</option>
+                
+                    <option value="hu" >Magyar</option>
+                
+                    <option value="mt" >Malti</option>
+                
+                    <option value="nl" >Nederlands</option>
+                
+                    <option value="pl" >Polski</option>
+                
+                    <option value="pt" >Português</option>
+                
+                    <option value="ro" >Română</option>
+                
+                    <option value="sk" >Slovenčina</option>
+                
+                    <option value="sl" >Slovenščina</option>
+                
+                    <option value="fi" >Suomi</option>
+                
+                    <option value="sv" >Svenska</option>
+                
+                    <option value="no" >Norsk</option>
+                
+            </select>
+            </li>
+        </ul>
+    </div>
+<br></br>
+<div class="container-fluid" id="cabecera">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3 no-padding">
+				<img src="/espd-web/static/img/escudo.png"
+					id="escudo" class="img-responsive">
+			</div>
+			<div class="col-md-9 align-center no-padding" id="div_titulo">
+				<p id="titulo"><span data-i18n="servicio.visualizacion">Servicio para documentos ROLECE y DEUC</span></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div style="text-align: center;">
+<div class="accordion" id="accordion2">
+<div class="accordion-group">
+<div class="accordion-heading"style="background-color: #eee;">
+<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+	  <h4 style="text-decoration:underline;"><span data-i18n="terminos.informacion">Términos e Información</span></h4>
+</a>
+
+
+
+
+
+
+</div>
+<div id="collapseOne" class="accordion-body collapse" style="height: 0px;">
+<div class="accordion-inner">
+			  <div style="text-align: left;margin-left: 100px">
+					
+						</br>
+
+						<p>Copyright 2017 Dirección General de Patrimonio del Estado
+							(SGCRC)</p>
+						<p>Términos del uso del servicio relativos a la visualización
+							del Documento Europeo Único de Contratación "DEUC" (ESPD por sus
+							siglas en inglés):</p>
+
+						<ul>
+
+							<li>El servicio se ofrece bajo Licencia EUPL, Versión 1.1 o
+								–en cuanto sean aprobadas por la Comisión Europea– versiones
+								posteriores de la EUPL (la «Licencia»);</li>
+							<li>Puede obtenerse una copia de la Licencia en: <a
+								href="https://www.boe.es/doue/2017/128/L00059-00064.pdf">https://www.boe.es/doue/2017/128/L00059-00064.pdf</a>.
+							</li>
+							<li>Para la visualización del documento DEUC / ESPD se
+								utiliza el software libre bajo licencia EUPL publicado por la
+								Comisión Europea, disponible en: <a
+								href="https://github.com/ESPD/ESPD-Service">https://github.com/ESPD/ESPD-Service</a>.
+							</li>
+							<li>Salvo cuando lo exija la legislación aplicable o se
+								acuerde por escrito, el programa distribuido con arreglo a la
+								Licencia se distribuye «TAL	CUAL»,
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni	implícitas.
+							</li>
+						</ul>
+					</div>
+</div>
+</div>
+</div>
+
+</div>
+
+</div>
+
+
+
+
+
+		            
+
+
+
+
+
+  
+<div id="breadbar" class="hidden-print" >
+    
+    
+        <ul class="breadcrumbs">
+            
+                <li>
+                    
+                        
+                            <a target="_blank" href="http://ec.europa.eu/index_en.htm" data-i18n="ec"
+                               class="breadcrumbElement">Comisión Europea</a>
+                        
+                        
+                    
+                </li>
+            
+                <li>
+                    
+                        
+                            <a target="_blank" href="#1" data-i18n="tools"
+                               class="breadcrumbElement">Herramientas</a>
+                        
+                        
+                    
+                </li>
+            
+                <li>
+                    
+                        
+                        
+                            <a href="#" data-i18n="espd" class="breadcrumbElement">Documento europeo único de contratación</a>
+                        
+                    
+                </li>
+            
+        </ul>
+    
+</div>
+
+		        </div>
+		        <div id="body" class="container espd-container">
+		            
+
+
+
+
+
+
+<script>
+    $(function () {
+        var country = $("select[name='authority.country']");
+
+        $('#whoareyou_ca').click(function () {
+            $('#tab_ca').show();
+            $('#tab_eo').hide();
+        });
+        $('#whoareyou_ce').click(function () {
+            $('#tab_ca').show();
+            $('#tab_eo').hide();
+        });
+        $('#whoareyou_eo').click(function () {
+            $('#tab_eo').show();
+            $('#tab_ca').hide();
+        });
+        var nextBtn = $('#nextBtn');
+        $("*[name='agent']").click(function () {
+            nextBtn.prop('disabled', true);
+            $('#tab-country-selection').removeClass('active');
+            $('#tab-single-upload').removeClass('active');
+            $('#tab-multiple-upload').removeClass('active');
+            $('.radioCa').removeAttr('checked');
+            $('[value="empty"]').prop('selected', true);
+            $("input:file").val('');
+
+            $('#where_are_you_from_' + (($(this).val() == 'eo') ? 'ca' : 'eo')).hide();
+            $('#where_are_you_from_' + $(this).val()).show();
+        });
+        $("input:file").change(function () {
+            if ($(this).val() != '') {
+                $('#tab-country-selection').addClass('active');
+                nextBtn.prop('disabled', country.val() === '');
+            }
+        });
+        country.change(function () {
+            nextBtn.prop('disabled', $(this).val() === '');
+        });
+        $("[name=action]").click(function () {
+            nextBtn.prop('disabled', country.val() === '');
+        });
+        nextBtn.prop('disabled', true);
+        if ($('#whoareyou_ca').is(':checked') || $('#whoareyou_ce').is(':checked')) {
+            $('#tab_ca').show();
+            $('#tab_eo').hide();
+        }
+        if ($('#whoareyou_eo').is(':checked')) {
+            $('#tab_eo').show();
+            $('#tab_ca').hide();
+        }
+        // create a new espd
+        if ($('#action1').is(':checked')) {
+            $('#tab-country-selection').show();
+            $('#where_are_you_from_eo').hide();
+            nextBtn.prop('disabled', false);
+        }
+        $('#action1').click(function () {
+            $('#tab-country-selection').show();
+            $('#tab-single-upload').hide();
+            $('#tab-multiple-upload').hide();
+        });
+        // reuse existing espd
+        if ($('#action2').is(':checked')) {
+            $('#tab-single-upload').show();
+            $('#tab-multiple-upload').hide();
+            $('#where_are_you_from_eo').hide();
+        }
+        $('#action2').click(function () {
+            $('#tab-single-upload').show();
+            $('#tab-multiple-upload').hide();
+        });
+        // review espd
+        if ($('#action3').is(':checked')) {
+            $('#tab-single-upload').show();
+            $('#tab-multiple-upload').hide();
+            $('#where_are_you_from_eo').hide();
+        }
+        $('#action3').click(function () {
+            $('#tab-single-upload').show();
+            $('#tab-multiple-upload').hide();
+        });
+        // import espd
+        if ($('#action4').is(':checked')) {
+            $('#tab-single-upload').show();
+            $('#tab-multiple-upload').hide();
+            $('#where_are_you_from_ca').hide();
+        }
+        $('#action4').click(function () {
+            $('#tab-single-upload').show();
+            $('#tab-multiple-upload').hide();
+        });
+        // merge two espds
+        if ($('#action5').is(':checked')) {
+            $('#tab-multiple-upload').show();
+            $('#tab-single-upload').hide();
+        }
+        $('#action5').click(function () {
+            $('#tab-multiple-upload').show();
+            $('#tab-single-upload').hide();
+        });
+        // create response
+        if ($('#action6').is(':checked')) {
+            $('#tab-country-selection').show();
+            $('#where_are_you_from_ca').hide();
+            nextBtn.prop('disabled', false);
+        }
+        $('#action6').click(function () {
+            $('#tab-country-selection').show();
+            $('#tab-single-upload').hide();
+            $('#tab-multiple-upload').hide();
+            $('#where_are_you_from_ca').hide();
+        });
+    });
+</script>
+
+<form id="espdFilterForm" data-toggle="validator" role="form" class="form-horizontal" action="filter" method="post" enctype="multipart/form-data">
+    <div class="panel-default">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+
+
+
+<div class="panel panel-default no-border hidden-print">
+    <ul class="nav nav-pills nav-wizard nav-justified">
+        <li class="active">
+            <a href="#"><i class="fa fa-random"></i>&nbsp;<span data-i18n="progress_start">Inicio</span></a>
+            <div class="nav-arrow"></div>
+        </li>
+        <li class="">
+            <div class="nav-wedge"></div>
+            <a class="" href="#"><i class="fa fa-university"></i>&nbsp;<span data-i18n="progress_procedure">Procedimiento</span></a>
+            <div class="nav-arrow"></div>
+        </li>
+        <li class="">
+            <div class="nav-wedge"></div>
+            <a class="" href="#"><i class="fa fa-exclamation"></i>&nbsp;<span data-i18n="progress_exclusion">Exclusión</span></a>
+            <div class="nav-arrow"></div>
+        </li>
+        <li class="">
+            <div class="nav-wedge"></div>
+            <a class="" href="#"><i class="fa fa-check-circle"></i>&nbsp;<span data-i18n="progress_selection">Selección</span></a>
+            <div class="nav-arrow"></div>
+        </li>
+        <li class="">
+            <div class="nav-wedge"></div>
+            <a class="" href="#"><i class="fa fa-download"></i>&nbsp;<span data-i18n="progress_finish">Finalización</span> </a>
+        </li>
+    </ul>
+</div>
+        <div>
+            <h2 data-i18n="filter_header">Bienvenido al servicio DEUC</h2>
+        </div>
+        
+
+        <div class="alert alert-espd-info">
+            <ul class="fa-ul">
+                <li>
+                    <i class="info-label fa fa-info-circle fa-lg fa-li"></i>
+                    <div id="filter_text"><span data-i18n="filter_alert"><p>El documento europeo único de contratación (DEUC) consiste en una declaración de la situación financiera, las capacidades y la idoneidad de las empresas para un procedimiento de contratación pública. Está disponible en todas las lenguas de la UE y se utiliza como prueba preliminar del cumplimiento de los requisitos exigidos en los procedimientos de contratación pública en toda la UE. Gracias a dicho documento, los licitadores ya no tendrán que proporcionar pruebas documentales completas y diferentes formularios utilizados anteriormente en la contratación pública de la UE, lo que significa una considerable simplificación del acceso a las oportunidades de licitación transfronterizas. A partir de octubre de 2018 el DEUC se ofrecerá exclusivamente en formato electrónico.</p><p>La Comisión Europea proporciona un servicio gratuito en línea para los compradores, los licitadores y las demás partes interesadas en cumplimentar el documento de forma electrónica. El formulario en línea puede rellenarse, imprimirse y luego enviarse al comprador junto con el resto de la oferta. Si el procedimiento se realiza electrónicamente, el DEUC podrá exportarse, almacenarse y transmitirse de forma electrónica. El DEUC presentado en el marco de un procedimiento de contratación pública anterior puede reutilizarse siempre que la información siga siendo correcta. Los licitadores podrán ser excluidos del procedimiento o ser objeto de enjuiciamiento si la información contenida en el DEUC se ha falseado gravemente, se ha ocultado o no puede completarse con documentos justificativos.</p></span></div>
+                    <div id="filter_faq">
+                            <span data-i18n="faq_text_more_info">Para más información sobre el DEUC, sírvase</span>
+                        <a href='http://ec.europa.eu/growth/single-market/public-procurement/e-procurement/espd/index_en.htm'>
+                                <span data-i18n="click_here">pulsar aquí</span>
+                        </a>
+                        <p></p>
+                            <span data-i18n="faq_text_answers">Si le interesan las respuestas a las preguntas más frecuentes sobre el DEUC, consulte</span>
+                       	<a href='http://ec.europa.eu/DocsRoom/documents/16002/attachments/1/translations/es/renditions/native'>
+                                <span data-i18n="faq_leaflet">Folleto de preguntas más frecuentes</span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+        <div>
+            <h3>
+                <span data-i18n="filter_who_are_you">¿Quién es usted?</span>
+                <span data-i18n="tooltip_espd_used_both_ca_eo" data-toggle="tooltip"
+                      title="El servicio DEUC puede ser utilizado tanto por los poderes adjudicadores como por los operadores económicos. Seleccione la opción que corresponda a su perfil en el presente procedimiento de contratación pública."></span>
+            </h3>
+            <div class="radio">
+                <label><input id="whoareyou_ca" name="agent" name="agent" href="#tab_ca" class="radiotab" type="radio" value="ca"/><span data-i18n="filter_i_am_ca">Soy un poder adjudicador</span></label>
+                <span data-i18n="tooltip_ca_ref_buyer" data-toggle="tooltip"
+                      title="El término de poder adjudicador se refiere al comprador."></span>
+            </div>
+            <div class="radio">
+                <label><input id="whoareyou_ce" name="agent" name="agent" href="#tab_ca" class="radiotab" type="radio" value="ce"/><span data-i18n="filter_i_am_ce">Soy una entidad adjudicadora</span></label>
+                <span data-i18n="tooltip_ce_ref_buyer" data-toggle="tooltip"
+                      title=" El concepto de entidad adjudicadora se refiere aquí a un comprador que opera en los sectores del agua, la energía, los transportes o los servicios postales. Los poderes adjudicadores que también operan en los sectores mencionados han de seleccionar «Soy un poder adjudicador»"></span>
+            </div>
+            <div class="radio">
+                <label><input id="whoareyou_eo" name="agent" name="agent" href="#tab_eo" class="radiotab" type="radio" value="eo"/><span data-i18n="filter_i_am_eop">Soy un operador económico</span></label>
+                <span data-i18n="tooltip_eo_ref_suppl" data-toggle="tooltip"
+                      title="El término de operador económico se refiere al proveedor/licitador."></span>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane" id="tab_ca">
+                    <h3><span data-i18n="filter_what_you_do">¿Qué desea hacer?</span></h3>
+                    <div class="row">
+                        <div class="radio col-md-3">
+                            <label><input id="action1" name="action" data-target="#tab-country-selection" name="action" class="radiotab radioCa" type="radio" value="ca_create_espd_request"/><span data-i18n="filter_create_espd">Crear un nuevo DEUC</span></label>
+                            <span data-i18n="tooltip_ca_can_create_espd" data-toggle="tooltip"
+                                  title="El poder adjudicador puede crear un DEUC a partir de cero. En tal caso, el poder adjudicador debe cumplimentar el formulario del DEUC con toda la información pertinente."></span>
+                        </div>
+                        <div class="col-md-5">
+                            <input id="tedReceptionId" name="tedReceptionId" class="form-control small" data-i18n="filter_ted_reception_id_placeholder" placeholder="Especifique el n&uacute;mero del anuncio recibido" type="text" value=""/>
+                        </div>
+                        <div class="col-md-4" style="padding-left: 0px;padding-right: 5px">
+                            <span data-i18n="tooltip_ted_reception_id" data-toggle="tooltip"
+                                  title="El poder adjudicador recibirá un mensaje electrónico procedente de la Oficina de Publicaciones, tras haber enviado un anuncio para publicación. Dicho correo electrónico contendrá un identificador que podrá utilizarse en este servicio para completar la información sobre el procedimiento y el poder adjudicador."></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="radio col-md-3">
+                            <label><input id="action2" name="action" data-target="#tab-single-upload" name="action" class="radiotab radioCa" type="radio" value="ca_reuse_espd_request"/><span data-i18n="filter_reuse_espd">Reutilizar un DEUC ya existente</span></label>
+                            <span data-i18n="tooltip_ca_can_import_espd" data-toggle="tooltip"
+                                  title="Si el poder adjudicador ya ha utilizado el servicio DEUC para otro procedimiento de contratación en el pasado, puede importar el DEUC almacenado en la red local. En este caso, el DEUC no tendrá que cumplimentarse a partir de cero, aunque algunos de los datos tendrán que actualizarse para tener en cuenta el presente procedimiento de contratación."></span>
+                        </div>
+                        <div class="col-md-offset-9"></div>
+                    </div>
+                    <div class="row">
+                        <div class="radio col-md-3">
+                            <label><input id="action3" name="action" data-target="#tab-single-upload" name="action" class="radiotab radioCa" type="radio" value="ca_review_espd_response"/><span data-i18n="filter_review_espd">Revisar un DEUC</span></label>
+                            <span data-i18n="tooltip_review_espd" data-toggle="tooltip" title="El poder adjudicador podrá comprobar/revisar el DEUC electrónico recibido del operador económico."></span>
+                        </div>
+                        <div class="col-md-offset-9">&nbsp;</div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="tab_eo">
+                    <h3 data-i18n="filter_what_you_do">¿Qué desea hacer?</h3>
+                    <div class="radio">
+                        <span class="k-button fa fa-upload hoverable"></span>
+                        <label><input id="action4" name="action" data-target="#tab-single-upload" name="action" class="radiotab radioCa" type="radio" value="eo_import_espd"/><span data-i18n="filter_import_espd">Importar un DEUC</span></label>
+                        <span data-i18n="tooltip_filter_eo_can_import_espd" data-toggle="tooltip"
+                              title="El operador económico puede importar el archivo DEUC, cumplimentado previamente por el poder adjudicador en el presente procedimiento de contratación pública y publicado con el anuncio de licitación."></span>
+                    </div>
+                    <div class="radio">
+                        <span class="k-button fa fa-upload hoverable"></span>
+                        <label><input id="action5" name="action" data-target="#tab-multiple-upload" name="action" class="radiotab radioCa" type="radio" value="eo_merge_espds"/><span data-i18n="filter_merge_espds">Fundir dos DEUC</span></label>
+                        <span data-i18n="tooltip_filter_eo_merge_espds" data-toggle="tooltip"
+                              title="The ESPD service will merge the 'old' ESPD with the new form prepared by the contracting authority for this procurement procedure."></span>
+                    </div>
+                    <div class="radio">
+                        <span class="k-button fa fa-upload hoverable"></span>
+                        <label><input id="action6" name="action" data-target="#tab-country-selection" name="action" class="radiotab radioCa" type="radio" value="eo_create_espd_response"/><span data-i18n="filter_create_response">Generar respuesta</span></label>
+                        <span data-i18n="tooltip_filter_create_response" data-toggle="tooltip"
+                              title="Generar una nueva respuesta DEUC"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane" id="tab-single-upload">
+                    <h3 data-i18n="filter_upload_document">Cargar documento</h3>
+                    Cargue una solicitud DEUC o una respuesta DEUC
+                    <input id="attachments" name="attachments" type="file" value=""/>
+                </div>
+                <div class="tab-pane" id="tab-multiple-upload">
+                    <h3 data-i18n="filter_upload_documents">Cargar documentos</h3>
+                    Cargue una solicitud DEUC del poder adjudicador
+                    <input id="attachments" name="attachments" type="file" value=""/>
+                    Cargue la respuesta de un antiguo DEUC de usted
+                    <input id="attachments" name="attachments" type="file" value=""/>
+                </div>
+                <div class="tab-pane" id="tab-country-selection">
+                    <h3 id="where_are_you_from_ca"><span data-i18n="filter_where_are_you_from_ca">¿Dónde tiene la sede su autoridad?</span></h3>
+                    <h3 id="where_are_you_from_eo"><span data-i18n="filter_where_are_you_from_eo">¿Dónde tiene la sede su empresa?</span></h3>
+                    <span data-i18n="filter_select_country">Elíjase un país</span>
+                    
+
+
+
+
+
+
+
+
+<select id="country" name="country" class=" optsorted">
+    <option value="" selected="selected">---</option>
+    
+        <option data-i18n="country_AD" value="AD">Andorra</option>
+    
+        <option data-i18n="country_AE" value="AE">Emiratos Árabes Unidos</option>
+    
+        <option data-i18n="country_AF" value="AF">Afganistán</option>
+    
+        <option data-i18n="country_AG" value="AG">Antigua y Barbuda</option>
+    
+        <option data-i18n="country_AI" value="AI">Anguila</option>
+    
+        <option data-i18n="country_AL" value="AL">Albania</option>
+    
+        <option data-i18n="country_AM" value="AM">Armenia</option>
+    
+        <option data-i18n="country_AO" value="AO">Angola</option>
+    
+        <option data-i18n="country_AQ" value="AQ">Antártica</option>
+    
+        <option data-i18n="country_AR" value="AR">Argentina</option>
+    
+        <option data-i18n="country_AS" value="AS">Samoa americana</option>
+    
+        <option data-i18n="country_AT" value="AT">Austria</option>
+    
+        <option data-i18n="country_AU" value="AU">Australia</option>
+    
+        <option data-i18n="country_AW" value="AW">Aruba</option>
+    
+        <option data-i18n="country_AX" value="AX">Islas Åland</option>
+    
+        <option data-i18n="country_AZ" value="AZ">Azerbaiyán</option>
+    
+        <option data-i18n="country_BA" value="BA">Bosnia y Hercegovina</option>
+    
+        <option data-i18n="country_BB" value="BB">Barbados</option>
+    
+        <option data-i18n="country_BD" value="BD">Bangladesh</option>
+    
+        <option data-i18n="country_BE" value="BE">Bélgica</option>
+    
+        <option data-i18n="country_BF" value="BF">Burkina Faso</option>
+    
+        <option data-i18n="country_BG" value="BG">Bulgaria</option>
+    
+        <option data-i18n="country_BH" value="BH">Bahráin</option>
+    
+        <option data-i18n="country_BI" value="BI">Burundi</option>
+    
+        <option data-i18n="country_BJ" value="BJ">Benín</option>
+    
+        <option data-i18n="country_BL" value="BL">San Bartolomé</option>
+    
+        <option data-i18n="country_BM" value="BM">Bermudas</option>
+    
+        <option data-i18n="country_BN" value="BN">Brunéi</option>
+    
+        <option data-i18n="country_BO" value="BO">Bolivia</option>
+    
+        <option data-i18n="country_BQ" value="BQ">Bonaire, Saint Eustatius y Saba</option>
+    
+        <option data-i18n="country_BR" value="BR">Brasil</option>
+    
+        <option data-i18n="country_BS" value="BS">Bahamas</option>
+    
+        <option data-i18n="country_BT" value="BT">Bután</option>
+    
+        <option data-i18n="country_BV" value="BV">Isla Bouvet</option>
+    
+        <option data-i18n="country_BW" value="BW">Botsuana</option>
+    
+        <option data-i18n="country_BY" value="BY">Bielorrusia</option>
+    
+        <option data-i18n="country_BZ" value="BZ">Belice</option>
+    
+        <option data-i18n="country_CA" value="CA">Canadá</option>
+    
+        <option data-i18n="country_CC" value="CC">Islas Cocos (Keeling)</option>
+    
+        <option data-i18n="country_CD" value="CD">República Democrática del Congo</option>
+    
+        <option data-i18n="country_CF" value="CF">República Centroafricana</option>
+    
+        <option data-i18n="country_CG" value="CG">Congo</option>
+    
+        <option data-i18n="country_CH" value="CH">Suiza</option>
+    
+        <option data-i18n="country_CI" value="CI">Costa de Marfil</option>
+    
+        <option data-i18n="country_CK" value="CK">Islas Cook</option>
+    
+        <option data-i18n="country_CL" value="CL">Chile</option>
+    
+        <option data-i18n="country_CM" value="CM">Camerún</option>
+    
+        <option data-i18n="country_CN" value="CN">China</option>
+    
+        <option data-i18n="country_CO" value="CO">Colombia</option>
+    
+        <option data-i18n="country_CR" value="CR">Costa Rica</option>
+    
+        <option data-i18n="country_CU" value="CU">Cuba</option>
+    
+        <option data-i18n="country_CV" value="CV">Cabo Verde</option>
+    
+        <option data-i18n="country_CW" value="CW">Curaçao</option>
+    
+        <option data-i18n="country_CX" value="CX">Isla Christmas</option>
+    
+        <option data-i18n="country_CY" value="CY">Chipre</option>
+    
+        <option data-i18n="country_CZ" value="CZ">República Checa</option>
+    
+        <option data-i18n="country_DE" value="DE">Alemania</option>
+    
+        <option data-i18n="country_DJ" value="DJ">Yibuti</option>
+    
+        <option data-i18n="country_DK" value="DK">Dinamarca</option>
+    
+        <option data-i18n="country_DM" value="DM">Dominica</option>
+    
+        <option data-i18n="country_DO" value="DO">República Dominicana</option>
+    
+        <option data-i18n="country_DZ" value="DZ">Argelia</option>
+    
+        <option data-i18n="country_EC" value="EC">Ecuador</option>
+    
+        <option data-i18n="country_EE" value="EE">Estonia</option>
+    
+        <option data-i18n="country_EG" value="EG">Egipto</option>
+    
+        <option data-i18n="country_EH" value="EH">Sáhara Occidental</option>
+    
+        <option data-i18n="country_ER" value="ER">Eritrea</option>
+    
+        <option data-i18n="country_ES" value="ES">España</option>
+    
+        <option data-i18n="country_ET" value="ET">Etiopía</option>
+    
+        <option data-i18n="country_FI" value="FI">Finlandia</option>
+    
+        <option data-i18n="country_FJ" value="FJ">Fiyi</option>
+    
+        <option data-i18n="country_FK" value="FK">Islas Malvinas</option>
+    
+        <option data-i18n="country_FM" value="FM">Micronesia</option>
+    
+        <option data-i18n="country_FO" value="FO">Islas Feroe</option>
+    
+        <option data-i18n="country_FR" value="FR">Francia</option>
+    
+        <option data-i18n="country_GA" value="GA">Gabón</option>
+    
+        <option data-i18n="country_GB" value="GB">Reino Unido</option>
+    
+        <option data-i18n="country_GD" value="GD">Granada</option>
+    
+        <option data-i18n="country_GE" value="GE">Georgia</option>
+    
+        <option data-i18n="country_GF" value="GF">Guyana francesa</option>
+    
+        <option data-i18n="country_GG" value="GG">Guernesey</option>
+    
+        <option data-i18n="country_GH" value="GH">Ghana</option>
+    
+        <option data-i18n="country_GI" value="GI">Gibraltar</option>
+    
+        <option data-i18n="country_GL" value="GL">Groenlandia</option>
+    
+        <option data-i18n="country_GM" value="GM">Gambia</option>
+    
+        <option data-i18n="country_GN" value="GN">Guinea</option>
+    
+        <option data-i18n="country_GP" value="GP">Guadalupe</option>
+    
+        <option data-i18n="country_GQ" value="GQ">Guinea Ecuatorial</option>
+    
+        <option data-i18n="country_GR" value="GR">Grecia</option>
+    
+        <option data-i18n="country_GS" value="GS">Islas Sandwich del Sur</option>
+    
+        <option data-i18n="country_GT" value="GT">Guatemala</option>
+    
+        <option data-i18n="country_GU" value="GU">Guam</option>
+    
+        <option data-i18n="country_GW" value="GW">Guinea-Bissau</option>
+    
+        <option data-i18n="country_GY" value="GY">Guyana</option>
+    
+        <option data-i18n="country_HK" value="HK">Hong Kong</option>
+    
+        <option data-i18n="country_HM" value="HM">Islas Heard y McDonald</option>
+    
+        <option data-i18n="country_HN" value="HN">Honduras</option>
+    
+        <option data-i18n="country_HR" value="HR">Croacia</option>
+    
+        <option data-i18n="country_HT" value="HT">Haití</option>
+    
+        <option data-i18n="country_HU" value="HU">Hungría</option>
+    
+        <option data-i18n="country_ID" value="ID">Indonesia</option>
+    
+        <option data-i18n="country_IE" value="IE">Irlanda</option>
+    
+        <option data-i18n="country_IL" value="IL">Israel</option>
+    
+        <option data-i18n="country_IM" value="IM">Isla de Man</option>
+    
+        <option data-i18n="country_IN" value="IN">India</option>
+    
+        <option data-i18n="country_IO" value="IO">Territorio británico del Océano Índico</option>
+    
+        <option data-i18n="country_IQ" value="IQ">Iraq</option>
+    
+        <option data-i18n="country_IR" value="IR">Irán</option>
+    
+        <option data-i18n="country_IS" value="IS">Islandia</option>
+    
+        <option data-i18n="country_IT" value="IT">Italia</option>
+    
+        <option data-i18n="country_JE" value="JE">Jersey</option>
+    
+        <option data-i18n="country_JM" value="JM">Jamaica</option>
+    
+        <option data-i18n="country_JO" value="JO">Jordania</option>
+    
+        <option data-i18n="country_JP" value="JP">Japón</option>
+    
+        <option data-i18n="country_KE" value="KE">Kenia</option>
+    
+        <option data-i18n="country_KG" value="KG">Kirgizistán</option>
+    
+        <option data-i18n="country_KH" value="KH">Camboya</option>
+    
+        <option data-i18n="country_KI" value="KI">Kiribati</option>
+    
+        <option data-i18n="country_KM" value="KM">Comoras</option>
+    
+        <option data-i18n="country_KN" value="KN">San Cristóbal y Nieves</option>
+    
+        <option data-i18n="country_KP" value="KP">Corea del Norte</option>
+    
+        <option data-i18n="country_KR" value="KR">Corea del Sur</option>
+    
+        <option data-i18n="country_KW" value="KW">Kuwait</option>
+    
+        <option data-i18n="country_KY" value="KY">Islas Caimán</option>
+    
+        <option data-i18n="country_KZ" value="KZ">Kazajistán</option>
+    
+        <option data-i18n="country_LA" value="LA">Laos</option>
+    
+        <option data-i18n="country_LB" value="LB">Líbano</option>
+    
+        <option data-i18n="country_LC" value="LC">Santa Lucía</option>
+    
+        <option data-i18n="country_LI" value="LI">Liechtenstein</option>
+    
+        <option data-i18n="country_LK" value="LK">Sri Lanka</option>
+    
+        <option data-i18n="country_LR" value="LR">Liberia</option>
+    
+        <option data-i18n="country_LS" value="LS">Lesoto</option>
+    
+        <option data-i18n="country_LT" value="LT">Lituania</option>
+    
+        <option data-i18n="country_LU" value="LU">Luxemburgo</option>
+    
+        <option data-i18n="country_LV" value="LV">Letonia</option>
+    
+        <option data-i18n="country_LY" value="LY">Libia</option>
+    
+        <option data-i18n="country_MA" value="MA">Marruecos</option>
+    
+        <option data-i18n="country_MC" value="MC">Mónaco</option>
+    
+        <option data-i18n="country_MD" value="MD">Moldavia</option>
+    
+        <option data-i18n="country_ME" value="ME">Montenegro</option>
+    
+        <option data-i18n="country_MF" value="MF">San Martín - FR</option>
+    
+        <option data-i18n="country_MG" value="MG">Madagascar</option>
+    
+        <option data-i18n="country_MH" value="MH">Islas Marshall</option>
+    
+        <option data-i18n="country_MK" value="MK">Antigua República Yugoslava de Macedonia</option>
+    
+        <option data-i18n="country_ML" value="ML">Malí</option>
+    
+        <option data-i18n="country_MM" value="MM">Birmania</option>
+    
+        <option data-i18n="country_MN" value="MN">Mongolia</option>
+    
+        <option data-i18n="country_MO" value="MO">Macao</option>
+    
+        <option data-i18n="country_MP" value="MP">Islas Marianas del Norte</option>
+    
+        <option data-i18n="country_MQ" value="MQ">Martinica</option>
+    
+        <option data-i18n="country_MR" value="MR">Mauritania</option>
+    
+        <option data-i18n="country_MS" value="MS">Monserrat</option>
+    
+        <option data-i18n="country_MT" value="MT">Malta</option>
+    
+        <option data-i18n="country_MU" value="MU">Mauricio</option>
+    
+        <option data-i18n="country_MV" value="MV">Maldivas</option>
+    
+        <option data-i18n="country_MW" value="MW">Malaui</option>
+    
+        <option data-i18n="country_MX" value="MX">México</option>
+    
+        <option data-i18n="country_MY" value="MY">Malasia</option>
+    
+        <option data-i18n="country_MZ" value="MZ">Mozambique</option>
+    
+        <option data-i18n="country_NA" value="NA">Namibia</option>
+    
+        <option data-i18n="country_NC" value="NC">Nueva Caledonia</option>
+    
+        <option data-i18n="country_NE" value="NE">Níger</option>
+    
+        <option data-i18n="country_NF" value="NF">Isla Norfolk</option>
+    
+        <option data-i18n="country_NG" value="NG">Nigeria</option>
+    
+        <option data-i18n="country_NI" value="NI">Nicaragua</option>
+    
+        <option data-i18n="country_NL" value="NL">Países Bajos</option>
+    
+        <option data-i18n="country_NO" value="NO">Noruega</option>
+    
+        <option data-i18n="country_NP" value="NP">Nepal</option>
+    
+        <option data-i18n="country_NR" value="NR">Nauru</option>
+    
+        <option data-i18n="country_NU" value="NU">Isla Niue</option>
+    
+        <option data-i18n="country_NZ" value="NZ">Nueva Zelanda</option>
+    
+        <option data-i18n="country_OM" value="OM">Omán</option>
+    
+        <option data-i18n="country_PA" value="PA">Panamá</option>
+    
+        <option data-i18n="country_PE" value="PE">Perú</option>
+    
+        <option data-i18n="country_PF" value="PF">Polinesia francesa</option>
+    
+        <option data-i18n="country_PG" value="PG">Papúa-Nueva Guinea</option>
+    
+        <option data-i18n="country_PH" value="PH">Filipinas</option>
+    
+        <option data-i18n="country_PK" value="PK">Pakistán</option>
+    
+        <option data-i18n="country_PL" value="PL">Polonia</option>
+    
+        <option data-i18n="country_PM" value="PM">San Pedro y Miquelón</option>
+    
+        <option data-i18n="country_PN" value="PN">Islas Pitcairn</option>
+    
+        <option data-i18n="country_PR" value="PR">Puerto Rico</option>
+    
+        <option data-i18n="country_PS" value="PS">Palestina</option>
+    
+        <option data-i18n="country_PT" value="PT">Portugal</option>
+    
+        <option data-i18n="country_PW" value="PW">Palaos</option>
+    
+        <option data-i18n="country_PY" value="PY">Paraguay</option>
+    
+        <option data-i18n="country_QA" value="QA">Qatar</option>
+    
+        <option data-i18n="country_RE" value="RE">Reunión</option>
+    
+        <option data-i18n="country_RO" value="RO">Rumania</option>
+    
+        <option data-i18n="country_RS" value="RS">Serbia</option>
+    
+        <option data-i18n="country_RU" value="RU">Rusia</option>
+    
+        <option data-i18n="country_RW" value="RW">Ruanda</option>
+    
+        <option data-i18n="country_SA" value="SA">Arabia Saudí</option>
+    
+        <option data-i18n="country_SB" value="SB">Islas Salomón</option>
+    
+        <option data-i18n="country_SC" value="SC">Seychelles</option>
+    
+        <option data-i18n="country_SD" value="SD">Sudán del Sur</option>
+    
+        <option data-i18n="country_SE" value="SE">Suecia</option>
+    
+        <option data-i18n="country_SG" value="SG">Singapur</option>
+    
+        <option data-i18n="country_SH" value="SH">Santa Elena</option>
+    
+        <option data-i18n="country_SI" value="SI">Eslovenia</option>
+    
+        <option data-i18n="country_SJ" value="SJ">Svalbard y la isla de Jan Mayen</option>
+    
+        <option data-i18n="country_SK" value="SK">Eslovaquia</option>
+    
+        <option data-i18n="country_SL" value="SL">Sierra Leona</option>
+    
+        <option data-i18n="country_SM" value="SM">San Marino</option>
+    
+        <option data-i18n="country_SN" value="SN">Senegal</option>
+    
+        <option data-i18n="country_SO" value="SO">Somalia</option>
+    
+        <option data-i18n="country_SR" value="SR">Surinam</option>
+    
+        <option data-i18n="country_SS" value="SS">Sudán</option>
+    
+        <option data-i18n="country_ST" value="ST">Santo Tomé y Príncipe</option>
+    
+        <option data-i18n="country_SV" value="SV">El Salvador</option>
+    
+        <option data-i18n="country_SX" value="SX">San Martín - NL</option>
+    
+        <option data-i18n="country_SY" value="SY">Siria</option>
+    
+        <option data-i18n="country_SZ" value="SZ">Suazilandia</option>
+    
+        <option data-i18n="country_TC" value="TC">Islas Turcas y Caicos</option>
+    
+        <option data-i18n="country_TD" value="TD">Chad</option>
+    
+        <option data-i18n="country_TF" value="TF">French Southern Territories</option>
+    
+        <option data-i18n="country_TG" value="TG">Togo</option>
+    
+        <option data-i18n="country_TH" value="TH">Tailandia</option>
+    
+        <option data-i18n="country_TJ" value="TJ">Tayikistán</option>
+    
+        <option data-i18n="country_TK" value="TK">IslasTokelau</option>
+    
+        <option data-i18n="country_TL" value="TL">Timor Oriental</option>
+    
+        <option data-i18n="country_TM" value="TM">Turkmenistán</option>
+    
+        <option data-i18n="country_TN" value="TN">Túnez</option>
+    
+        <option data-i18n="country_TO" value="TO">Tonga</option>
+    
+        <option data-i18n="country_TR" value="TR">Turquía</option>
+    
+        <option data-i18n="country_TT" value="TT">Trinidad y Tobago</option>
+    
+        <option data-i18n="country_TV" value="TV">Tuvalu</option>
+    
+        <option data-i18n="country_TW" value="TW">Taiwán</option>
+    
+        <option data-i18n="country_TZ" value="TZ">Tanzania</option>
+    
+        <option data-i18n="country_UA" value="UA">Ucrania</option>
+    
+        <option data-i18n="country_UG" value="UG">Uganda</option>
+    
+        <option data-i18n="country_UM" value="UM">United States Minor Outlying Islands</option>
+    
+        <option data-i18n="country_US" value="US">Estados Unidos</option>
+    
+        <option data-i18n="country_UY" value="UY">Uruguay</option>
+    
+        <option data-i18n="country_UZ" value="UZ">Uzbekistán</option>
+    
+        <option data-i18n="country_VA" value="VA">El Vaticano</option>
+    
+        <option data-i18n="country_VC" value="VC">San Vicente y las Granadinas</option>
+    
+        <option data-i18n="country_VE" value="VE">Venezuela</option>
+    
+        <option data-i18n="country_VG" value="VG">Islas Vírgenes británicas</option>
+    
+        <option data-i18n="country_VI" value="VI">Islas Vírgenes de los Estados Unidos</option>
+    
+        <option data-i18n="country_VN" value="VN">Vietnam</option>
+    
+        <option data-i18n="country_VU" value="VU">Vanuatu</option>
+    
+        <option data-i18n="country_WF" value="WF">Wallis y Futuna</option>
+    
+        <option data-i18n="country_WS" value="WS">Samoa Occidental</option>
+    
+        <option data-i18n="country_XK" value="XK">Kosovo</option>
+    
+        <option data-i18n="country_YE" value="YE">Yemen</option>
+    
+        <option data-i18n="country_YT" value="YT">Mayotte</option>
+    
+        <option data-i18n="country_ZA" value="ZA">Sudáfrica</option>
+    
+        <option data-i18n="country_ZM" value="ZM">Zambia</option>
+    
+        <option data-i18n="country_ZW" value="ZW">Zimbabue</option>
+    
+</select>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="hidden-print">
+    <div class="col-md-offset-3 col-md-6 hidden-print"> 
+        <div class="btn-group btn-group-justified" role="group" >
+            
+            
+                <div class="btn-group" role="group">
+                    <a id="prevAnchor" class="btn btn-default btn-lg" href="/espd-web/welcome"
+                       role="button">
+                        <i class="fa fa-arrow-circle-o-left"></i> <span data-i18n="previous">Previo</span>
+                    </a>
+                </div>
+            
+            <div class="btn-group" role="group">
+                <a id="cancelBtn" class="btn btn-default btn-lg" href="/espd-web/welcome"
+                   role="button">
+                    <i class="fa fa-times-circle"></i>
+                    <span data-i18n="cancel">Cancelar</span>
+                </a>
+            </div>
+            
+            
+            
+                <div class="btn-group" role="group">
+                    <button id="nextBtn" type="submit" class="btn btn-default btn-lg" name="next" value="procedure">
+                        <i class="fa fa-arrow-circle-o-right"></i> <span data-i18n="next">Siguiente</span>
+                    </button>
+                </div>
+            
+            
+        </div>
+    </div>
+    <div class="col-md-3 hidden-print">&nbsp;</div>
+</div>
+</form>
+
+		        </div>
+			</div>
+            
+            
+                <div id="footer">
+                    
+
+
+
+
+
+
+<footer style="color: black" class="hidden-print container-fluid">
+	<div class="row">
+		<div class="col-lg-12">
+
+
+		</div>
+	</div>
+</footer>
+
+
+
+
+
+                </div>
+            
+	        <link rel="stylesheet" type="text/css" href="/espd-web/static/font-awesome-4.2.0/css/font-awesome.min.css;jsessionid=15E2B70E0F913E88115691794318C41F">
+        </div>
+
+    </body>
+</html>
